@@ -1,0 +1,6 @@
+v: 0
+micros:
+  - name: finca-bio-massa
+    src: .
+    engine: python3.10
+    primary: true
