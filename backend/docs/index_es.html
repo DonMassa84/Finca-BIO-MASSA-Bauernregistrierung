@@ -1,17 +1,444 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Finca BIO MASSA – Registro de agricultores</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finca BIO MASSA - Registro de Agricultores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --secondary: #FFC107;
+            --light: #F5F5F5;
+            --dark: #333333;
+            --gray: #757575;
+            --light-gray: #E0E0E0;
+            --white: #FFFFFF;
+            --black: #000000;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1625246335525-8b5e7a5c2c5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .registration {
+            padding: 80px 0;
+        }
+
+        .registration-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .registration-info {
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 8px;
+            padding: 40px;
+        }
+
+        .registration-form {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: var(--light-gray);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .language-selector {
+            margin-top: 20px;
+        }
+
+        .language-selector a {
+            color: var(--light-gray);
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .language-selector a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .registration-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>🌱 Finca BIO MASSA – Registro de agricultores</h1>
-  <p>Únete a nuestra red de agricultores orgánicos en Camerún. Precios justos, ventas seguras, agricultura sostenible.</p>
-  <ul>
-    <li>📦 Exportación a Alemania (Douala → Hamburgo)</li>
-    <li>🌍 Certificación BIO-UE prevista para 2030</li>
-    <li>🤝 Coordinación: Pablo Massa (Camerún) & Daniel Massa (Alemania)</li>
-  </ul>
-  <p><a href="index.html">🇩🇪 Deutsche Version</a> | <a href="index_fr.html">🇫🇷 Version française</a></p>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-leaf fa-2x" style="color: #4CAF50;"></i>
+                <div class="logo-text">Finca BIO MASSA</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Ventajas</a></li>
+                    <li><a href="#projects">Proyectos</a></li>
+                    <li><a href="#registration">Registro</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Registro de agricultores para Finca BIO MASSA</h1>
+            <p>Cacao sostenible · Precios justos · Comunidad · Futuro en Camerún</p>
+            <a href="#registration" class="btn">Registrarse ahora</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sus ventajas</h2>
+                <p>Por qué debería registrarse en Finca BIO MASSA</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>Precios justos</h3>
+                    <p>Venta directa sin intermediarios: mejores márgenes para los agricultores.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+                    <h3>Sostenibilidad</h3>
+                    <p>Apoyo en cultivo ecológico y certificación BIO.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Ingresos predecibles</h3>
+                    <p>Modelo de arrendamiento: ingresos seguros y costos calculables.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Red</h3>
+                    <p>Parte de una comunidad sólida de agricultores en Nwangan y Ebolowa.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Logística</h3>
+                    <p>Opción de contenedor Douala → Hamburgo, comercialización internacional.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Futuro</h3>
+                    <p>Asociaciones con Ritter Sport, GEPA y certificación UE-BIO para 2030.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="features" style="background-color: #f5f5f5;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros proyectos</h2>
+                <p>Descubra nuestras iniciativas y asociaciones actuales</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🌞 Energía solar</h3>
+                    <p>Desarrollo de proyectos de energía solar en Guinea y Camerún.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🌱 Modelo de arrendamiento de cacao</h3>
+                    <p>Precios de arrendamiento 100–250k FCFA → Rendimientos 4–5 sacos (400–500 kg). Márgenes de beneficio > 40% posibles.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🏪 Mini-supermercado</h3>
+                    <p>Economato en la finca BIO + supermercado en Ebolowa.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📦 Exportación</h3>
+                    <p>Contenedor Douala–Hamburgo, mercados objetivo Alemania y UE.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="registration" class="registration">
+        <div class="container">
+            <div class="section-header">
+                <h2>Registro</h2>
+                <p>Únase a nuestra red ahora</p>
+            </div>
+            
+            <div class="registration-container">
+                <div class="registration-info">
+                    <h3>Sus ventajas como socio</h3>
+                    <ul>
+                        <li>✔ Precios justos y garantía de compra</li>
+                        <li>✔ Certificación BIO y formación de calidad</li>
+                        <li>✔ Acceso a mercados internacionales</li>
+                        <li>✔ Apoyo en financiación y programas GIZ</li>
+                    </ul>
+                </div>
+                
+                <div class="registration-form">
+                    <h3>Formulario de registro</h3>
+                    <form onsubmit="alert('¡Gracias por registrarse! Nos pondremos en contacto con usted pronto.'); return false;">
+                        <div class="form-group">
+                            <label>Nombre*</label>
+                            <input type="text" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Teléfono / WhatsApp*</label>
+                            <input type="tel" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Lugar / Región</label>
+                            <input type="text">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Producción (kg/año)</label>
+                            <input type="number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Certificación ecológica</label>
+                            <select>
+                                <option>Sí</option>
+                                <option>No</option>
+                                <option>En conversión</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn" type="submit">Registrarse ahora</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Preguntas frecuentes</h2>
+                <p>Preguntas más comunes</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>¿Quién puede participar?</h3>
+                    <p>Agricultores con métodos ecológicos o en conversión a BIO.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>¿Qué apoyo hay disponible?</h3>
+                    <p>Asesoramiento, formación, manual de procesos BIO, acceso a socios.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>¿Cómo funciona la comercialización?</h3>
+                    <p>Compra por Finca BIO MASSA, exportación a Alemania, contratos a largo plazo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p><strong>Contacto (Camerún):</strong><br>Pablo Massa · Tel: +237 655 310 460<br>Lydie Meyo · Tel: +237 697 121 480</p>
+            <p><strong>Coordinación (Alemania):</strong><br>Daniel Massa · Tel: +49 178 2989360</p>
+            <p><strong>Contacto Familia Massa:</strong><br>Michael Massa · Tel: +49 178 2180114</p>
+            
+            <div class="language-selector">
+                <a href="index.html">Deutsch</a> | 
+                <a href="index_fr.html">Français</a> | 
+                <a href="index_es.html">Español</a>
+            </div>
+            
+            <p>© 2025 Finca BIO MASSA · Cacao sostenible de Camerún</p>
+        </div>
+    </footer>
 </body>
 </html>
