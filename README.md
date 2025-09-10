@@ -32,3 +32,4 @@ source .venv/bin/activate
 pip install -r requirements.txt
 export APP_SECRET_KEY=change-me
 python app.py
+
