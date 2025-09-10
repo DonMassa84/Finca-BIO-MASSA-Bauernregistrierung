@@ -1,4 +1,4 @@
-const API_URL = "https://finca-bio-massa.onrender.com/api/farmers";
+const API_URL = "https://dein-projekt-name.up.railway.app/api/farmers";
 
 document.getElementById("farmerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -11,7 +11,6 @@ document.getElementById("farmerForm").addEventListener("submit", async (e) => {
     body: JSON.stringify({ name, phone })
   });
 
-  document.getElementById("farmerForm").reset();
   loadFarmers();
 });
 
@@ -27,4 +26,5 @@ async function loadFarmers() {
     list.appendChild(li);
   });
 }
+
 loadFarmers();
