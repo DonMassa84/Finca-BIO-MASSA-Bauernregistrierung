@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finca BIO MASSA - Nachhaltige Landwirtschaft</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --secondary: #FFC107;
+            --light: #F5F5F5;
+            --dark: #333333;
+            --gray: #757575;
+            --light-gray: #E0E0E0;
+            --white: #FFFFFF;
+            --black: #000000;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #FFA000;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--dark);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-btn {
+            background: var(--light);
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .language-btn:hover {
+            background: var(--light-gray);
+        }
+
+        .language-btn i {
+            font-size: 0.8rem;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            min-width: 120px;
+            z-index: 100;
+            display: none;
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .language-option:hover {
+            background-color: var(--light);
+        }
+
+        .language-flag {
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1625246335525-8b5e7a5c2c5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .step-number {
+            background-color: var(--primary);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px;
+            justify-items: center;
+            align-items: center;
+            margin: 50px 0;
+        }
+
+        .partner-logo {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .partner-logo img {
+            max-height: 70px;
+            max-width: 150px;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover img {
+            filter: grayscale(0);
+        }
+
+        /* Registration Section */
+        .registration {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .registration-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+
+        .registration-info {
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .registration-info h3 {
+            color: var(--white);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .benefits-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .benefits-list i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+
+        .registration-form {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .registration-form h3 {
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            background-color: var(--white);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            background-color: var(--white);
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light-gray);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                gap: 25px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease;
+            }
+            
+            nav ul.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .registration-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .language-selector {
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzRDQUY1MCIgcng9IjE1IiByeT0iMTUiLz48cGF0aCBkPSJNNDAgNjBDNDAgNDUgNjAgMzAgMTAwIDMwYzQwIDAgNjAgMTUgNjAgMzAgMCAxNS0yMCAzMC02MCAzMFM0MCA3NSA0MCA2MHoiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNODAgODBsNDAgNDAgNDAtNDAtNDAtNDAtNDAgNDB6IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTE0MCAxMzBjLTEwIDAtMjAgNS0zMCAxNSAxMCAxMCAyMCAxNSAzMCAxNSAxMCAwIDIwLTUgMzAtMTUtMTAtMTAtMjAtMTUtMzAtMTV6IiBmaWxsPSIjZmZmIi8+PC9zdmc+" alt="Finca BIO MASSA Logo" class="logo-img">
+                <div class="logo-text">Finca <span>BIO MASSA</span></div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#features">Vorteile</a></li>
+                    <li><a href="#projects">Projekte</a></li>
+                    <li><a href="#registration">Registrierung</a></li>
+                    <li><a href="#partners">Partner</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                    <li class="language-selector">
+                        <div class="language-btn" id="languageBtn">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iI2ZmY2MwMCIgcng9IjE1IiByeT0iMTUiLz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjE3MCIgeT0iMTcxIiBmaWxsPSIjZDAwIi8+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSIxNzAiIHk9Ijg1IiBmaWxsPSIjMDAwIi8+PC9zdmc+" class="language-flag" alt="Deutsch">
+                            DE
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" data-lang="de">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iI2ZmY2MwMCIgcng9IjE1IiByeT0iMTUiLz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjE3MCIgeT0iMTcxIiBmaWxsPSIjZDAwIi8+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSIxNzAiIHk9Ijg1IiBmaWxsPSIjMDAwIi8+PC9zdmc+" class="language-flag" alt="Deutsch">
+                                Deutsch
+                            </div>
+                            <div class="language-option" data-lang="es">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iI2YwMCIgcng9IjE1IiByeT0iMTUiLz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjE3MCIgeT0iMTcxIiBmaWxsPSIjZmYwMDAwIi8+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSIxNzAiIHk9Ijg1IiBmaWxsPSIjMDA2IGNmIi8+PC9zdmc+" class="language-flag" alt="Español">
+                                Español
+                            </div>
+                            <div class="language-option" data-lang="fr">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzAwMDZiNSIgcng9IjE1IiByeT0iMTUiLz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjE3MCIgeT0iMTcxIiBmaWxsPSIjZmYiLz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjE3MCIgeT0iODUiIGZpbGw9IiNlNjAwMDAiLz48L3N2Zz4=" class="language-flag" alt="Français">
+                                Français
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="hero-title">Bauernregistrierung für Finca BIO MASSA</h1>
+            <p id="hero-subtitle">Werden Sie Teil unseres Netzwerks ökologischer Landwirte und profitieren Sie von direkten Vermarktungsmöglichkeiten, fairen Preisen und einer Gemeinschaft von Gleichgesinnten.</p>
+            <a href="#registration" class="btn btn-secondary" id="hero-cta">Jetzt registrieren</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="features-title">Ihre Vorteile</h2>
+                <p id="features-subtitle">Warum Sie sich bei Finca BIO MASSA registrieren sollten</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 id="feature1-title">Faire Preise</h3>
+                    <p id="feature1-desc">Erhalten Sie angemessene Vergütung für Ihre biologischen Produkte ohne Zwischenhändler.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 id="feature2-title">Netzwerk</h3>
+                    <p id="feature2-desc">Tauschen Sie sich mit anderen ökologischen Landwirten aus und profitieren Sie vom gemeinsamen Wissen.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 id="feature3-title">Logistik</h3>
+                    <p id="feature3-desc">Wir übernehmen den Transport Ihrer Produkte zu unseren Abnehmern und Partnern.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 id="feature4-title">Absatzsicherheit</h3>
+                    <p id="feature4-desc">Garantierte Abnahmemengen für Ihre Produkte durch langfristige Partnerschaften.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 id="feature5-title">Zertifizierung</h3>
+                    <p id="feature5-desc">Unterstützung bei der Bio-Zertifizierung und Qualitätssicherung Ihrer Produkte.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 id="feature6-title">Nachhaltigkeit</h3>
+                    <p id="feature6-desc">Tragen Sie aktiv zum Umweltschutz bei und fördern Sie nachhaltige Landwirtschaft.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="how-it-works-title">So funktioniert's</h2>
+                <p id="how-it-works-subtitle">Der einfache Weg zur Registrierung und Zusammenarbeit</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 id="step1-title">Registrieren</h3>
+                        <p id="step1-desc">Füllen Sie das Registrierungsformular aus und geben Sie Informationen zu Ihrem Betrieb und Ihren Produkten an.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 id="step2-title">Prüfung</h3>
+                        <p id="step2-desc">Unser Team prüft Ihre Angaben und nimmt bei Bedarf Kontakt mit Ihnen für weitere Details auf.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 id="step3-title">Vertragsabschluss</h3>
+                        <p id="step3-desc">Bei erfolgreicher Prüfung erhalten Sie einen Vertrag mit allen Konditionen für die Zusammenarbeit.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 id="step4-title">Produktion starten</h3>
+                        <p id="step4-desc">Nach Vertragsunterzeichnung können Sie mit der Produktion beginnen und Ihre Produkte an uns liefern.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3 id="step5-title">Vermarktung</h3>
+                        <p id="step5-desc">Wir vermarkten Ihre Produkte und sorgen für pünktliche Zahlungen zu den vereinbarten Konditionen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="projects-title">Unsere Projekte</h2>
+                <p id="projects-subtitle">Entdecken Sie unsere aktuellen Initiativen und Partnerschaften</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
+                    <div class="project-content">
+                        <h3 id="project1-title">Kakao-Pachtmodell</h3>
+                        <p id="project1-desc">Innovatives Pachtmodell für Kakao-Bauern mit garantierter Abnahme und fairen Preisen.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
+                    <div class="project-content">
+                        <h3 id="project2-title">Solarenergie</h3>
+                        <p id="project2-desc">Aufbau von Solarenergie-Projekten in Guinea & Kamerun für nachhaltige Energieversorgung.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1550147760-44c9966d6bc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80');"></div>
+                    <div class="project-content">
+                        <h3 id="project3-title">Mini-Supermarkt</h3>
+                        <p id="project3-desc">Economato auf der BIO-Finca plus Supermarkt in Ebolowa für lokale Produkte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="partners-title">Unsere Partner</h2>
+                <p id="partners-subtitle">Gemeinsam für eine nachhaltige Landwirtschaft</p>
+            </div>
+            
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/European_Commission.svg/320px-European_Commission.svg.png" alt="EU Bio Zertifizierung">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/GIZ_Logo.svg/320px-GIZ_Logo.svg.png" alt="GIZ">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Ritter_Sport_2017_logo.svg/320px-Ritter_Sport_2017_logo.svg.png" alt="Ritter Sport">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Logo_gepa.svg/320px-Logo_gepa.svg.png" alt="GEPA">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="registration">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="registration-title">Registrierung</h2>
+                <p id="registration-subtitle">Werden Sie jetzt Teil unseres Netzwerks</p>
+            </div>
+            
+            <div class="registration-container">
+                <div class="registration-info">
+                    <h3 id="registration-info-title">Ihre Vorteile als Partner</h3>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check-circle"></i> <span id="benefit1">Faire und transparente Preise</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span id="benefit2">Langfristige Abnahmeverträge</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span id="benefit3">Unterstützung bei der Bio-Zertifizierung</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span id="benefit4">Regelmäßige Schulungen und Workshops</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span id="benefit5">Zugang zu modernen Anbaumethoden</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span id="benefit6">Gemeinschaftlicher Erfahrungsaustausch</span></li>
+                    </ul>
+                    <p id="registration-info-text">Wir freuen uns darauf, Sie in unserem Netzwerk willkommen zu heißen und gemeinsam die ökologische Landwirtschaft zu fördern.</p>
+                </div>
+                
+                <div class="registration-form">
+                    <h3 id="registration-form-title">Registrierungsformular</h3>
+                    <form id="farmerRegistrationForm">
+                        <div class="form-group">
+                            <label for="name" id="name-label">Vollständiger Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="farm-name" id="farm-name-label">Hofname</label>
+                            <input type="text" id="farm-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" id="email-label">E-Mail Adresse</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" id="phone-label">Telefonnummer</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address" id="address-label">Adresse</label>
+                            <textarea id="address" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="products" id="products-label">Welche Produkte bieten Sie an?</label>
+                            <select id="products" multiple>
+                                <option value="vegetables">Gemüse</option>
+                                <option value="fruits">Obst</option>
+                                <option value="grains">Getreide</option>
+                                <option value="dairy">Milchprodukte</option>
+                                <option value="eggs">Eier</option>
+                                <option value="herbs">Kräuter</option>
+                                <option value="honey">Honig</option>
+                                <option value="other">Andere</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="certification" id="certification-label">Haben Sie eine Bio-Zertifizierung?</label>
+                            <select id="certification" required>
+                                <option value="">Bitte auswählen</option>
+                                <option value="yes">Ja</option>
+                                <option value="no">Nein, aber in Umstellung</option>
+                                <option value="planned">Nein, aber geplant</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" id="message-label">Weitere Informationen</label>
+                            <textarea id="message" placeholder="Erzählen Sie uns mehr über Ihren Hof und Ihre Landwirtschaftsmethoden..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" id="submit-btn">Registrierung abschicken</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="faq-title">Häufige Fragen</h2>
+                <p id="faq-subtitle">Alles, was Sie über die Registrierung wissen müssen</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span id="faq1-question">Wer kann sich registrieren?</span> <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq1-answer">Alle Landwirte und landwirtschaftlichen Betriebe, die ökologische Anbaumethoden verwenden oder auf ökologischen Landbau umstellen möchten, können sich registrieren. Wir unterstützen sowohl bereits zertifizierte Bio-Betriebe als auch Betriebe in der Umstellungsphase.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span id="faq2-question">Was sind die Voraussetzungen?</span> <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq2-answer">Die wichtigste Voraussetzung ist die Bereitschaft, nach ökologischen Standards zu arbeiten. Wir erwarten Transparenz bezüglich der Anbaumethoden und die Einhaltung der vereinbarten Qualitätsstandards. Eine bestehende Bio-Zertifizierung ist von Vorteil, aber nicht zwingend erforderlich.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span id="faq3-question">Wie läuft die Vertragsgestaltung ab?</span> <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq3-answer">Nach erfolgreicher Registrierung und Prüfung erstellen wir einen individuellen Vertrag, der Abnahmemengen, Preise, Lieferbedingungen und Zahlungsmodalitäten festlegt. Der Vertrag wird für Sie kostenlos erstellt und kann nach Absprache angepasst werden.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span id="faq4-question">Wie werden die Preise festgelegt?</span> <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq4-answer">Die Preise werden fair und transparent basierend auf den Produktionskosten, der Qualität der Produkte und dem Marktumfeld festgelegt. Wir legen Wert auf langfristige Partnerschaften und stabile Preise, die Ihnen Planungssicherheit geben.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span id="faq5-question">Bietet ihr Unterstützung bei der Umstellung?</span> <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq5-answer">Ja, wir unterstützen Sie bei der Umstellung auf ökologischen Landbau mit Beratung, Schulungen und Vernetzung mit erfahrenen Bio-Bauern. Wir helfen auch bei der Beantragung von Fördermitteln und der Bio-Zertifizierung.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4 id="footer-about-title">Finca BIO MASSA</h4>
+                    <p id="footer-about-text">Ihr Partner für ökologische Landwirtschaft und faire Vermarktung. Gemeinsam für eine nachhaltige Zukunft.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 id="footer-contact-cameroon-title">Kontakt Kamerun</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-user"></i> Pablo Massa</li>
+                        <li><i class="fas fa-phone"></i> +237 655 310 460</li>
+                        <li><i class="fas fa-user"></i> Lydie Meyo</li>
+                        <li><i class="fas fa-phone"></i> +237 697 121 480</li>
+                        <li><i class="fas fa-envelope"></i> info@fincabiomassa.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 id="footer-contact-germany-title">Kontakt Deutschland</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-user"></i> Daniel Massa</li>
+                        <li><i class="fas fa-envelope"></i> daniel@fincabiomassa.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 id="footer-links-title">Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features" id="footer-link1">Vorteile</a></li>
+                        <li><a href="#how-it-works" id="footer-link2">So funktioniert's</a></li>
+                        <li><a href="#projects" id="footer-link3">Projekte</a></li>
+                        <li><a href="#registration" id="footer-link4">Registrierung</a></li>
+                        <li><a href="#faq" id="footer-link5">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p id="copyright-text">&copy; 2023 Finca BIO MASSA. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sprachdaten
+        const translations = {
+            de: {
+                // Hero Section
+                "hero-title": "Bauernregistrierung für Finca BIO MASSA",
+                "hero-subtitle": "Werden Sie Teil unseres Netzwerks ökologischer Landwirte und profitieren Sie von direkten Vermarktungsmöglichkeiten, fairen Preisen und einer Gemeinschaft von Gleichgesinnten.",
+                "hero-cta": "Jetzt registrieren",
+                
+                // Features Section
+                "features-title": "Ihre Vorteile",
+                "features-subtitle": "Warum Sie sich bei Finca BIO MASSA registrieren sollten",
+                "feature1-title": "Faire Preise",
+                "feature1-desc": "Erhalten Sie angemessene Vergütung für Ihre biologischen Produkte ohne Zwischenhändler.",
+                "feature2-title": "Netzwerk",
+                "feature2-desc": "Tauschen Sie sich mit anderen ökologischen Landwirten aus und profitieren Sie vom gemeinsamen Wissen.",
+                "feature3-title": "Logistik",
+                "feature3-desc": "Wir übernehmen den Transport Ihrer Produkte zu unseren Abnehmern und Partnern.",
+                "feature4-title": "Absatzsicherheit",
+                "feature4-desc": "Garantierte Abnahmemengen für Ihre Produkte durch langfristige Partnerschaften.",
+                "feature5-title": "Zertifizierung",
+                "feature5-desc": "Unterstützung bei der Bio-Zertifizierung und Qualitätssicherung Ihrer Produkte.",
+                "feature6-title": "Nachhaltigkeit",
+                "feature6-desc": "Tragen Sie aktiv zum Umweltschutz bei und fördern Sie nachhaltige Landwirtschaft.",
+                
+                // How It Works Section
+                "how-it-works-title": "So funktioniert's",
+                "how-it-works-subtitle": "Der einfache Weg zur Registrierung und Zusammenarbeit",
+                "step1-title": "Registrieren",
+                "step1-desc": "Füllen Sie das Registrierungsformular aus und geben Sie Informationen zu Ihrem Betrieb und Ihren Produkten an.",
+                "step2-title": "Prüfung",
+                "step2-desc": "Unser Team prüft Ihre Angaben und nimmt bei Bedarf Kontakt mit Ihnen für weitere Details auf.",
+                "step3-title": "Vertragsabschluss",
+                "step3-desc": "Bei erfolgreicher Prüfung erhalten Sie einen Vertrag mit allen Konditionen für die Zusammenarbeit.",
+                "step4-title": "Produktion starten",
+                "step4-desc": "Nach Vertragsunterzeichnung können Sie mit der Produktion beginnen und Ihre Produkte an uns liefern.",
+                "step5-title": "Vermarktung",
+                "step5-desc": "Wir vermarkten Ihre Produkte und sorgen für pünktliche Zahlungen zu den vereinbarten Konditionen.",
+                
+                // Projects Section
+                "projects-title": "Unsere Projekte",
+                "projects-subtitle": "Entdecken Sie unsere aktuellen Initiativen und Partnerschaften",
+                "project1-title": "Kakao-Pachtmodell",
+                "project1-desc": "Innovatives Pachtmodell für Kakao-Bauern mit garantierter Abnahme und fairen Preisen.",
+                "project2-title": "Solarenergie",
+                "project2-desc": "Aufbau von Solarenergie-Projekten in Guinea & Kamerun für nachhaltige Energieversorgung.",
+                "project3-title": "Mini-Supermarkt",
+                "project3-desc": "Economato auf der BIO-Finca plus Supermarkt in Ebolowa für lokale Produkte.",
+                
+                // Partners Section
+                "partners-title": "Unsere Partner",
+                "partners-subtitle": "Gemeinsam für eine nachhaltige Landwirtschaft",
+                
+                // Registration Section
+                "registration-title": "Registrierung",
+                "registration-subtitle": "Werden Sie jetzt Teil unseres Netzwerks",
+                "registration-info-title": "Ihre Vorteile als Partner",
+                "benefit1": "Faire und transparente Preise",
+                "benefit2": "Langfristige Abnahmeverträge",
+                "benefit3": "Unterstützung bei der Bio-Zertifizierung",
+                "benefit4": "Regelmäßige Schulungen und Workshops",
+                "benefit5": "Zugang zu modernen Anbaumethoden",
+                "benefit6": "Gemeinschaftlicher Erfahrungsaustausch",
+                "registration-info-text": "Wir freuen uns darauf, Sie in unserem Netzwerk willkommen zu heißen und gemeinsam die ökologische Landwirtschaft zu fördern.",
+                "registration-form-title": "Registrierungsformular",
+                "name-label": "Vollständiger Name",
+                "farm-name-label": "Hofname",
+                "email-label": "E-Mail Adresse",
+                "phone-label": "Telefonnummer",
+                "address-label": "Adresse",
+                "products-label": "Welche Produkte bieten Sie an?",
+                "certification-label": "Haben Sie eine Bio-Zertifizierung?",
+                "message-label": "Weitere Informationen",
+                "submit-btn": "Registrierung abschicken",
+                
+                // FAQ Section
+                "faq-title": "Häufige Fragen",
+                "faq-subtitle": "Alles, was Sie über die Registrierung wissen müssen",
+                "faq1-question": "Wer kann sich registrieren?",
+                "faq1-answer": "Alle Landwirte und landwirtschaftlichen Betriebe, die ökologische Anbaumethoden verwenden oder auf ökologischen Landbau umstellen möchten, können sich registrieren. Wir unterstützen sowohl bereits zertifizierte Bio-Betriebe als auch Betriebe in der Umstellungsphase.",
+                "faq2-question": "Was sind die Voraussetzungen?",
+                "faq2-answer": "Die wichtigste Voraussetzung ist die Bereitschaft, nach ökologischen Standards zu arbeiten. Wir erwarten Transparenz bezüglich der Anbaumethoden und die Einhaltung der vereinbarten Qualitätsstandards. Eine bestehende Bio-Zertifizierung ist von Vorteil, aber nicht zwingend erforderlich.",
+                "faq3-question": "Wie läuft die Vertragsgestaltung ab?",
+                "faq3-answer": "Nach erfolgreicher Registrierung und Prüfung erstellen wir einen individuellen Vertrag, der Abnahmemengen, Preise, Lieferbedingungen und Zahlungsmodalitäten festlegt. Der Vertrag wird für Sie kostenlos erstellt und kann nach Absprache angepasst werden.",
+                "faq4-question": "Wie werden die Preise festgelegt?",
+                "faq4-answer": "Die Preise werden fair und transparent basierend auf den Produktionskosten, der Qualität der Produkte und dem Marktumfeld festgelegt. Wir legen Wert auf langfristige Partnerschaften und stabile Preise, die Ihnen Planungssicherheit geben.",
+                "faq5-question": "Bietet ihr Unterstützung bei der Umstellung?",
+                "faq5-answer": "Ja, wir unterstützen Sie bei der Umstellung auf ökologischen Landbau mit Beratung, Schulungen und Vernetzung mit erfahrenen Bio-Bauern. Wir helfen auch bei der Beantragung von Fördermitteln und der Bio-Zertifizierung.",
+                
+                // Footer
+                "footer-about-title": "Finca BIO MASSA",
+                "footer-about-text": "Ihr Partner für ökologische Landwirtschaft und faire Vermarktung. Gemeinsam für eine nachhaltige Zukunft.",
+                "footer-contact-cameroon-title": "Kontakt Kamerun",
+                "footer-contact-germany-title": "Kontakt Deutschland",
+                "footer-links-title": "Links",
+                "footer-link1": "Vorteile",
+                "footer-link2": "So funktioniert's",
+                "footer-link3": "Projekte",
+                "footer-link4": "Registrierung",
+                "footer-link5": "FAQ",
+                "copyright-text": "© 2023 Finca BIO MASSA. Alle Rechte vorbehalten."
+            },
+            es: {
+                // Hero Section
+                "hero-title": "Registro de Agricultores para Finca BIO MASSA",
+                "hero-subtitle": "Conviértase en parte de nuestra red de agricultores ecológicos y benefíciese de oportunidades de comercialización directa, precios justos y una comunidad de personas con ideas afines.",
+                "hero-cta": "Registrarse ahora",
+                
+                // Features Section
+                "features-title": "Sus Ventajas",
+                "features-subtitle": "Por qué debería registrarse en Finca BIO MASSA",
+                "feature1-title": "Precios Justos",
+                "feature1-desc": "Reciba una remuneración adecuada por sus productos ecológicos sin intermediarios.",
+                "feature2-title": "Red de Contactos",
+                "feature2-desc": "Intercambie ideas con otros agricultores ecológicos y benefíciese de los conocimientos compartidos.",
+                "feature3-title": "Logística",
+                "feature3-desc": "Nos encargamos del transporte de sus productos a nuestros compradores y socios.",
+                "feature4-title": "Seguridad de Comercialización",
+                "feature4-desc": "Volúmenes de compra garantizados para sus productos mediante asociaciones a largo plazo.",
+                "feature5-title": "Certificación",
+                "feature5-desc": "Apoyo en la certificación ecológica y garantía de calidad de sus productos.",
+                "feature6-title": "Sostenibilidad",
+                "feature6-desc": "Contribuya activamente a la protección del medio ambiente y fomente la agricultura sostenible.",
+                
+                // How It Works Section
+                "how-it-works-title": "Cómo Funciona",
+                "how-it-works-subtitle": "El camino sencillo hacia el registro y la colaboración",
+                "step1-title": "Registrarse",
+                "step1-desc": "Rellene el formulario de registro y facilite información sobre su explotación y sus productos.",
+                "step2-title": "Verificación",
+                "step2-desc": "Nuestro equipo examinará sus datos y, si es necesario, se pondrá en contacto con usted para obtener más detalles.",
+                "step3-title": "Firma del Contrato",
+                "step3-desc": "Tras una verificación exitosa, recibirá un contrato con todas las condiciones para la colaboración.",
+                "step4-title": "Comenzar la Producción",
+                "step4-desc": "Tras la firma del contrato, puede empezar a producir y entregarnos sus productos.",
+                "step5-title": "Comercialización",
+                "step5-desc": "Comercializamos sus productos y nos encargamos de los pagos puntuales según las condiciones acordadas.",
+                
+                // Projects Section
+                "projects-title": "Nuestros Proyectos",
+                "projects-subtitle": "Descubra nuestras iniciativas y asociaciones actuales",
+                "project1-title": "Modelo de Arrendamiento de Cacao",
+                "project1-desc": "Innovador modelo de arrendamiento para productores de cacao con compra garantizada y precios justos.",
+                "project2-title": "Energía Solar",
+                "project2-desc": "Desarrollo de proyectos de energía solar en Guinea y Camerún para un suministro energético sostenible.",
+                "project3-title": "Minisupermercado",
+                "project3-desc": "Economato en la finca BIO más supermercado en Ebolowa para productos locales.",
+                
+                // Partners Section
+                "partners-title": "Nuestros Socios",
+                "partners-subtitle": "Juntos por una agricultura sostenible",
+                
+                // Registration Section
+                "registration-title": "Registro",
+                "registration-subtitle": "Únase ahora a nuestra red",
+                "registration-info-title": "Sus Ventajas como Socio",
+                "benefit1": "Precios justos y transparentes",
+                "benefit2": "Contratos de compra a largo plazo",
+                "benefit3": "Apoyo en la certificación ecológica",
+                "benefit4": "Formación y talleres periódicos",
+                "benefit5": "Acceso a métodos de cultivo modernos",
+                "benefit6": "Intercambio de experiencias comunitario",
+                "registration-info-text": "Estamos deseando darle la bienvenida a nuestra red y fomentar juntos la agricultura ecológica.",
+                "registration-form-title": "Formulario de Registro",
+                "name-label": "Nombre completo",
+                "farm-name-label": "Nombre de la finca",
+                "email-label": "Dirección de correo electrónico",
+                "phone-label": "Número de teléfono",
+                "address-label": "Dirección",
+                "products-label": "¿Qué productos ofrece?",
+                "certification-label": "¿Tiene certificación ecológica?",
+                "message-label": "Información adicional",
+                "submit-btn": "Enviar registro",
+                
+                // FAQ Section
+                "faq-title": "Preguntas Frecuentes",
+                "faq-subtitle": "Todo lo que necesita saber sobre el registro",
+                "faq1-question": "¿Quién puede registrarse?",
+                "faq1-answer": "Todos los agricultores y explotaciones agrícolas que utilicen métodos de cultivo ecológicos o deseen pasarse a la agricultura ecológica pueden registrarse. Apoyamos tanto a explotaciones biológicas ya certificadas como a explotaciones en fase de conversión.",
+                "faq2-question": "¿Cuáles son los requisitos?",
+                "faq2-answer": "El requisito más importante es la voluntad de trabajar según normas ecológicas. Esperamos transparencia respecto a los métodos de cultivo y el cumplimiento de los estándares de calidad acordados. Una certificación bio existente es ventajosa, pero no obligatoria.",
+                "faq3-question": "¿Cómo se elabora el contrato?",
+                "faq3-answer": "Tras un registro y una verificación exitosos, elaboramos un contrato individual que establece los volúmenes de compra, los precios, las condiciones de entrega y las modalidades de pago. El contrato se elabora gratuitamente para usted y puede adaptarse previa consulta.",
+                "faq4-question": "¿Cómo se fijan los precios?",
+                "faq4-answer": "Los precios se fijan de forma justa y transparente en función de los costes de producción, la calidad de los productos y la situación del mercado. Valoramos las asociaciones a largo plazo y los precios estables que le ofrecen seguridad de planificación.",
+                "faq5-question": "¿Ofrecen apoyo para la conversión?",
+                "faq5-answer": "Sí, le apoyamos en la conversión a la agricultura ecológica con asesoramiento, formación y establecimiento de contactos con agricultores ecológicos experimentados. También le ayudamos a solicitar subvenciones y la certificación ecológica.",
+                
+                // Footer
+                "footer-about-title": "Finca BIO MASSA",
+                "footer-about-text": "Su partner para agricultura ecológica y comercialización justa. Juntos por un futuro sostenible.",
+                "footer-contact-cameroon-title": "Contacto Camerún",
+                "footer-contact-germany-title": "Contacto Alemania",
+                "footer-links-title": "Enlaces",
+                "footer-link1": "Ventajas",
+                "footer-link2": "Cómo funciona",
+                "footer-link3": "Proyectos",
+                "footer-link4": "Registro",
+                "footer-link5": "Preguntas frecuentes",
+                "copyright-text": "© 2023 Finca BIO MASSA. Todos los derechos reservados."
+            },
+            fr: {
+                // Hero Section
+                "hero-title": "Enregistrement des Agriculteurs pour Finca BIO MASSA",
+                "hero-subtitle": "Rejoignez notre réseau d'agriculteurs biologiques et bénéficiez d'opportunités de commercialisation directe, de prix équitables et d'une communauté de personnes partageant les mêmes idées.",
+                "hero-cta": "S'inscrire maintenant",
+                
+                // Features Section
+                "features-title": "Vos Avantages",
+                "features-subtitle": "Pourquoi vous devriez vous inscrire à Finca BIO MASSA",
+                "feature1-title": "Prix Équitables",
+                "feature1-desc": "Recevez une rémunération adéquate pour vos produits biologiques sans intermédiaires.",
+                "feature2-title": "Réseau",
+                "feature2-desc": "Échangez avec d'autres agriculteurs biologiques et profitez des connaissances partagées.",
+                "feature3-title": "Logistique",
+                "feature3-desc": "Nous prenons en charge le transport de vos produits vers nos acheteurs et partenaires.",
+                "feature4-title": "Sécurité des Débouchés",
+                "feature4-desc": "Volumes d'achat garantis pour vos produits grâce à des partenariats à long terme.",
+                "feature5-title": "Certification",
+                "feature5-desc": "Soutien pour la certification biologique et l'assurance qualité de vos produits.",
+                "feature6-title": "Durabilité",
+                "feature6-desc": "Contribuez activement à la protection de l'environnement et favorisez l'agriculture durable.",
+                
+                // How It Works Section
+                "how-it-works-title": "Comment ça Marche",
+                "how-it-works-subtitle": "La voie simple vers l'enregistrement et la collaboration",
+                "step1-title": "S'inscrire",
+                "step1-desc": "Remplissez le formulaire d'inscription et fournissez des informations sur votre exploitation et vos produits.",
+                "step2-title": "Vérification",
+                "step2-desc": "Notre équipe examinera vos données et, si nécessaire, vous contactera pour plus de détails.",
+                "step3-title": "Signature du Contrat",
+                "step3-desc": "Après une vérification réussie, vous recevrez un contrat avec toutes les conditions de collaboration.",
+                "step4-title": "Commencer la Production",
+                "step4-desc": "Après la signature du contrat, vous pouvez commencer à produire et nous livrer vos produits.",
+                "step5-title": "Commercialisation",
+                "step5-desc": "Nous commercialisons vos produits et veillons à des paiements ponctuels selon les conditions convenues.",
+                
+                // Projects Section
+                "projects-title": "Nos Projets",
+                "projects-subtitle": "Découvrez nos initiatives et partenariats actuels",
+                "project1-title": "Modèle de Location de Cacao",
+                "project1-desc": "Modèle de location innovant pour les producteurs de cacao avec achat garanti et prix équitables.",
+                "project2-title": "Énergie Solaire",
+                "project2-desc": "Développement de projets d'énergie solaire en Guinée et au Cameroun pour un approvisionnement énergétique durable.",
+                "project3-title": "Mini-supermarché",
+                "project3-desc": "Économat à la ferme BIO plus supermarché à Ebolowa pour les produits locaux.",
+                
+                // Partners Section
+                "partners-title": "Nos Partenaires",
+                "partners-subtitle": "Ensemble pour une agriculture durable",
+                
+                // Registration Section
+                "registration-title": "Inscription",
+                "registration-subtitle": "Rejoignez notre réseau dès maintenant",
+                "registration-info-title": "Vos Avantages en tant que Partenaire",
+                "benefit1": "Prix équitables et transparents",
+                "benefit2": "Contrats d'achat à long terme",
+                "benefit3": "Soutien à la certification biologique",
+                "benefit4": "Formations et ateliers réguliers",
+                "benefit5": "Accès à des méthodes de culture modernes",
+                "benefit6": "Échange d'expériences communautaire",
+                "registration-info-text": "Nous nous réjouissons de vous accueillir dans notre réseau et de promouvoir ensemble l'agriculture biologique.",
+                "registration-form-title": "Formulaire d'Inscription",
+                "name-label": "Nom complet",
+                "farm-name-label": "Nom de l'exploitation",
+                "email-label": "Adresse e-mail",
+                "phone-label": "Numéro de téléphone",
+                "address-label": "Adresse",
+                "products-label": "Quels produits proposez-vous?",
+                "certification-label": "Disposez-vous d'une certification biologique?",
+                "message-label": "Informations complémentaires",
+                "submit-btn": "Soumettre l'inscription",
+                
+                // FAQ Section
+                "faq-title": "Questions Fréquentes",
+                "faq-subtitle": "Tout ce que vous devez savoir sur l'inscription",
+                "faq1-question": "Qui peut s'inscrire?",
+                "faq1-answer": "Tous les agriculteurs et exploitations agricoles qui utilisent des méthodes de culture biologiques ou souhaitent passer à l'agriculture biologique peuvent s'inscrire. Nous soutenons autant les exploitations biologiques déjà certifiées que les exploitations en phase de conversion.",
+                "faq2-question": "Quelles sont les conditions?",
+                "faq2-answer": "La condition la plus importante est la volonté de travailler selon des normes biologiques. Nous attendons de la transparence concernant les méthodes de culture et le respect des standards de qualité convenus. Une certification bio existante est avantageuse, mais pas obligatoire.",
+                "faq3-question": "Comment se déroule l'élaboration du contrat?",
+                "faq3-answer": "Après une inscription et une vérification réussies, nous élaborons un contrat individuel qui fixe les volumes d'achat, les prix, les conditions de livraison et les modalités de paiement. Le contrat est établi gratuitement pour vous et peut être adapté après consultation.",
+                "faq4-question": "Comment les prix sont-ils fixés?",
+                "faq4-answer": "Les prix sont fixés de manière équitable et transparente sur la base des coûts de production, de la qualité des produits et de la situation du marché. Nous privilégions les partenariats à long terme et les prix stables qui vous offrent une sécurité de planification.",
+                "faq5-question": "Proposez-vous un soutien pour la conversion?",
+                "faq5-answer": "Oui, nous vous soutenons dans la conversion à l'agriculture biologique par des conseils, des formations et la mise en relation avec des agriculteurs biologiques expérimentés. Nous vous aidons également à demander des subventions et la certification biologique.",
+                
+                // Footer
+                "footer-about-title": "Finca BIO MASSA",
+                "footer-about-text": "Votre partenaire pour l'agriculture biologique et la commercialisation équitable. Ensemble pour un avenir durable.",
+                "footer-contact-cameroon-title": "Contact Cameroun",
+                "footer-contact-germany-title": "Contact Allemagne",
+                "footer-links-title": "Liens",
+                "footer-link1": "Avantages",
+                "footer-link2": "Comment ça marche",
+                "footer-link3": "Projets",
+                "footer-link4": "Inscription",
+                "footer-link5": "Questions fréquentes",
+                "copyright-text": "© 2023 Finca BIO MASSA. Tous droits réservés."
+            }
+        };
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Form Submission
+        const registrationForm = document.getElementById('farmerRegistrationForm');
+        
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Registrierung! Wir werden uns in Kürze bei Ihnen melden.');
+            registrationForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Sprachauswahl-Funktionalität
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const languageOptions = document.querySelectorAll('.language-option');
+        
+        // Sprache umschalten
+        function switchLanguage(lang) {
+            // Alle Elemente mit data-i18n Attribut durchgehen
+            Object.keys(translations[lang]).forEach(key => {
+                const elements = document.querySelectorAll(`[id="${key}"]`);
+                elements.forEach(element => {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+            });
+            
+            // Aktuelle Sprache speichern
+            localStorage.setItem('language', lang);
+            
+            // Dropdown schließen
+            languageDropdown.classList.remove('show');
+        }
+        
+        // Sprache auswählen
+        languageOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.getAttribute('data-lang');
+                switchLanguage(lang);
+            });
+        });
+        
+        // Dropdown anzeigen/ausblenden
+        languageBtn.addEventListener('click', () => {
+            languageDropdown.classList.toggle('show');
+        });
+        
+        // Klick außerhalb des Dropdowns schließt es
+        document.addEventListener('click', (e) => {
+            if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+        
+        // Gespeicherte Sprache laden oder Standard (Deutsch) verwenden
+        const savedLanguage = localStorage.getItem('language') || 'de';
+        switchLanguage(savedLanguage);
+        
+        // Flagge im Button aktualisieren
+        function updateLanguageButton(lang) {
+            const flagMap = {
+                de: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iI2ZmY2MwMCIgcng9IjE1IiByeT0iMTUiLz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjE3MCIgeT0iMTcxIiBmaWxsPSIjZDAwIi8+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSIxNzAiIHk9Ijg1IiBmaWxsPSIjMDAwIi8+PC9zdmc+',
+                es: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iI2YwMCIgcng9IjE1IiByeT0iMTUiLz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjE3MCIgeT0iMTcxIiBmaWxsPSIjZmYwMDAwIi8+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSIxNzAiIHk9Ijg1IiBmaWxsPSIjMDA2IGNmIi8+PC9zdmc+',
+                fr: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzAwMDZiNSIgcng9IjE1IiByeT0iMTUiLz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjE3MCIgeT0iMTcxIiBmaWxsPSIjZmYiLz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ�IjE3MCIgeT0iODUiIGZpbGw9IiNlNjAwMDAiLz48L3N2Zz4='
+            };
+            
+            const flagImg = languageBtn.querySelector('.language-flag');
+            flagImg.src = flagMap[lang];
+            
+            const textSpan = languageBtn.querySelector('span');
+            textSpan.textContent = lang.toUpperCase();
+        }
+        
+        // Gespeicherte Sprache beim Laden anwenden
+        updateLanguageButton(savedLanguage);
+    </script>
+</body>
+</html>
