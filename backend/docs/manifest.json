@@ -1,0 +1,9 @@
+{
+  "name": "Finca BIO MASSA – Bauernregistrierung",
+  "short_name": "BIO MASSA",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f5132",
+  "theme_color": "#0f5132",
+  "icons": []
+}

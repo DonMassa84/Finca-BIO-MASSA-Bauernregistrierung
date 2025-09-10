@@ -1,19 +1,142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>🌱 Finca BIO MASSA – Bauernregistrierung</title>
+  <meta charset="utf-8">
+  <title>Finca BIO MASSA – Bauernregistrierung</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f5132">
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🌱 Bauernregistrierung</h1>
-  <form id="farmerForm">
-    <input type="text" id="name" placeholder="Name" required>
-    <input type="text" id="phone" placeholder="Telefon" required>
-    <button type="submit">➕ Hinzufügen</button>
-  </form>
-  <h2>📋 Registrierte Bauern</h2>
-  <ul id="farmerList"></ul>
+  <div class="container">
+    <header>
+      <h1>🌱 Finca BIO MASSA – Bauernregistrierung</h1>
+      <span class="badge">Offline · CSV · Foto</span>
+      <select id="lang" class="lang">
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+      </select>
+    </header>
+
+    <div class="card">
+      <div class="kicker" id="intro">
+        Registriere Mitglieder (Bauern). Daten werden lokal im Browser gespeichert. Export/Import möglich.
+      </div>
+    </div>
+
+    <form id="farmerForm" class="card">
+      <div class="grid">
+        <div class="col-6">
+          <label data-i="name">Vorname</label>
+          <input name="firstName" required>
+        </div>
+        <div class="col-6">
+          <label data-i="surname">Nachname</label>
+          <input name="lastName" required>
+        </div>
+
+        <div class="col-6">
+          <label data-i="id">Identitätsnummer</label>
+          <input name="nationalId">
+        </div>
+        <div class="col-6">
+          <label data-i="member">Mitglieds-Nr.</label>
+          <input name="memberNo">
+        </div>
+
+        <div class="col-6">
+          <label data-i="birthPlace">Geburtsort</label>
+          <input name="birthPlace">
+        </div>
+        <div class="col-6">
+          <label data-i="birthDate">Geburtsdatum</label>
+          <input name="birthDate" type="date">
+        </div>
+
+        <div class="col-6">
+          <label data-i="marital">Familienstand</label>
+          <select name="maritalStatus">
+            <option value="single">Ledig</option>
+            <option value="married">Verheiratet</option>
+            <option value="widowed">Verwitwet</option>
+            <option value="divorced">Geschieden</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label data-i="children">Anzahl Kinder</label>
+          <input name="children" type="number" min="0" step="1" value="0">
+        </div>
+
+        <div class="col-6">
+          <label data-i="kg">Kg pro Monat</label>
+          <input name="kgPerMonth" type="number" min="0" step="0.1">
+        </div>
+        <div class="col-6">
+          <label data-i="whatsapp">Telefon / WhatsApp</label>
+          <input name="phone">
+        </div>
+
+        <div class="col-6">
+          <label data-i="altPhone">Zweitkontakt</label>
+          <input name="altPhone">
+        </div>
+        <div class="col-6">
+          <label data-i="photo">Foto</label>
+          <input name="photo" type="file" accept="image/*">
+          <img id="preview" class="preview" alt="" style="display:none;margin-top:8px;">
+        </div>
+
+        <div class="col-12">
+          <label data-i="notes">Notizen</label>
+          <textarea name="notes" rows="3"></textarea>
+        </div>
+
+        <div class="col-12 toolbar">
+          <button class="btn" type="submit" data-i="add">➕ Hinzufügen</button>
+          <button class="btn-ghost" type="button" id="resetForm">Formular leeren</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="card">
+      <div class="toolbar">
+        <input id="search" placeholder="Suche: Name, ID, Telefon …" style="flex:1">
+        <button class="btn-ghost" id="exportCsv">CSV exportieren</button>
+        <label class="btn-ghost" for="importJson" style="display:inline-block">JSON importieren</label>
+        <input id="importJson" type="file" accept="application/json" style="display:none">
+        <button class="btn-ghost" id="exportJson">JSON exportieren</button>
+        <button class="btn-ghost" id="printList">Drucken</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th data-i="tblName">Name</th>
+            <th>ID</th>
+            <th data-i="tblMember">Mitglied</th>
+            <th data-i="tblKg">kg/Monat</th>
+            <th data-i="tblPhone">Telefon</th>
+            <th>Foto</th>
+            <th data-i="tblActions">Aktionen</th>
+          </tr>
+        </thead>
+        <tbody id="rows">
+          <tr class="empty"><td colspan="7">Noch keine Einträge.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      © Finca BIO MASSA · Nwangan & Ebolowa · Offline-App (PWA). Späterer API-Anschluss möglich.
+    </footer>
+  </div>
+
   <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(()=>{});
+    }
+  </script>
 </body>
 </html>
