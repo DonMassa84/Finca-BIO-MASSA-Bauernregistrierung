@@ -1,4 +1,4 @@
-const API_URL = "https://dein-projekt-name.up.railway.app/api/farmers";
+const API_URL = "https://finca-bio-massa.fly.dev/api/farmers";
 
 document.getElementById("farmerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
