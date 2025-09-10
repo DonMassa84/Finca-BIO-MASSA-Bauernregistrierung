@@ -1,0 +1,49 @@
+mkdir -p .github/workflows
+
+cat > .github/workflows/release.yml <<'YML'
+name: 🚀 Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements.txt || true
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.1.0
+          name: "Finca BIO MASSA – Bauernregistrierung v0.1.0"
+          body: |
+            Erstes Release der Farmers-App (MVP):
+            - Registrierung von Bauern
+            - Foto-Upload
+            - Produktionsdaten
+            - CSV-Export
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+YML
