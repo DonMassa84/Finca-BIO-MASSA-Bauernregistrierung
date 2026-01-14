@@ -1,9 +1,12 @@
-name: 🚀 Release
+name: Release
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -15,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
@@ -33,8 +36,8 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.1.0
-          name: "Finca BIO MASSA – Bauernregistrierung v0.1.0"
+          tag_name: ${{ github.ref_name }}
+          name: "Finca BIO MASSA - Bauernregistrierung ${{ github.ref_name }}"
           body: |
             Erstes Release der Farmers-App (MVP):
             - Registrierung von Bauern
